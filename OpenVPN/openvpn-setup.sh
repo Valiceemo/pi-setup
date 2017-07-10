@@ -27,4 +27,9 @@ sudo echo "$PASSWORD" | sudo tee --append /etc/openvpn/pia/login
 
 ## Connect now?
 
-
+if (whiptail --title "Connect to PIA VPN now?" --yesno "Choose between Yes and No." 10 60)
+then
+sudo openvpn --config /etc/openvpn/pia/uk.conf
+else
+pass
+fi
