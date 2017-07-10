@@ -23,11 +23,13 @@ sudo echo "$PASSWORD" | sudo tee --append /etc/openvpn/pia/login
 
 ## Edit .conf file to point to login and cert details
 
-## PLACEHOLDER ##
+sudo sed -i 's/auth-user-pass/auth-user-pass /etc/openvpn/pia/login/g' /etc/openvpn/pia/uk.conf
+sudo sed -i 's/ca ca.rsa.2048.crt/ca ca.rsa.2048.crt /etc/openvpn/pia/ca.rsa.2048.crt/g' /etc/openvpn/pia/uk.conf
+sudo sed -i 's/crl-verif crl.rsa.2048.pem/crl-verif crl.rsa.2048.pem /etc/openvpn/pia/crl.rsa.2048.pem/g' /etc/openvpn/pia/uk.conf
 
 ## Connect now?
 
-if (whiptail --title "Connect to PIA VPN now?" --yesno "Choose between Yes and No." 10 60)
+if (whiptail --title "Connect to PIA VPN now?" --yesno "Choose between Yes and No." 10 80)
 then
 sudo openvpn --config /etc/openvpn/pia/uk.conf
 else
