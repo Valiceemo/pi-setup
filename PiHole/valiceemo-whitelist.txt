@@ -1,0 +1,50 @@
+## X-Box
+attestation.xboxlive.com
+cert.mgt.xboxlive.com
+ctldl.windowsupdate.com
+def-vef.xboxlive.com
+device.auth.xboxlive.com
+eds.xboxlive.com
+help.ui.xboxlive.com
+licensing.xboxlive.com
+notify.xboxlive.com
+title.auth.xboxlive.com
+title.mgt.xboxlive.com
+www.msftncsi.com
+www.xboxlive.com
+xbox.ipv6.microsoft.com
+xboxexperiencesprod.experimentation.xboxlive.com
+xflight.xboxlive.com
+xkms.xbolive.com
+xsts.auth.xboxlive.com
+
+## Microsoft
+www.msftncsi.com
+
+## URL Shorteners
+www.bit.ly
+bit.ly
+ow.ly
+j.mp
+goo.gl
+
+## Google
+google.com
+webcache.googleusercontent.com
+chrome.google.com
+clients2.google.com
+clients3.google.com
+clients4.google.com
+clients5.google.com
+
+## YouTube HIstory
+s.youtube.com
+video-stats.l.google.com
+
+## Spotify
+spclient.wg.spotify.com
+
+## Misc
+netflix.com
+tomshardware.com
+
