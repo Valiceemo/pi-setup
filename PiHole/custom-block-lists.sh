@@ -18,7 +18,7 @@ sleep 2
 echo "Adding lists to /etc/pihole/adlists.list..."
 sudo wget -s https://raw.githubusercontent.com/Valiceemo/pi-setup/master/PiHole/Valiceemo-adlists.list -P /etc/pihole
 sleep 2
-cat /etc/pihole/Valiceemo-adlists.list | sudo tee --append /etc/pihole/adlists.list
+cat /etc/pihole/Valiceemo-adlists.list | sudo tee --append /etc/pihole/adlists.list > /dev/null 2>&1
 sleep 3
 echo "DONE"
 
@@ -29,7 +29,7 @@ sudo rm -f /etc/pihole/Valiceemo-adlists.list
 ## run pihole gravity update
 echo "Running pihole gravity..."
 sleep 3
-sudo bash /etc/.pihole/gravity.sh &>/dev/null
+sudo bash /etc/.pihole/gravity.sh > /dev/null 2>&1
 echo "Completed, Pihole Gravity has been run with the added lists"
 
 DOMAINS_BLOCKED_AFTER=`curl --silent "http://localhost/admin/api.php?summary"| jq '.domains_being_blocked'`
