@@ -16,15 +16,10 @@ sudo cp /etc/pihole/adlists.list /etc/pihole/adlists.list.bk
 echo "DONE"
 sleep 2
 echo "Adding lists to /etc/pihole/adlists.list..."
-sudo wget -s https://raw.githubusercontent.com/Valiceemo/pi-setup/master/PiHole/Valiceemo-adlists.list -P /etc/pihole
+sudo wget -qO - https://v.firebog.net/hosts/lists.php?type=tick | sudo tee /etc/pihole/adlists.list
 sleep 2
-cat /etc/pihole/Valiceemo-adlists.list | sudo tee --append /etc/pihole/adlists.list > /dev/null 2>&1
-sleep 3
-echo "DONE"
 
-## Cleanup
-echo "Cleaning up..."
-sudo rm -f /etc/pihole/Valiceemo-adlists.list
+echo "DONE"
 
 ## run pihole gravity update
 echo "Running pihole gravity..."
