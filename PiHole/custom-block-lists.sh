@@ -1,6 +1,6 @@
 #!/bin/sh
 
-VERSION=003
+VERSION=004
 
 echo "================================================================"
 echo "=====                Valiceemo adlists.list                ====="
