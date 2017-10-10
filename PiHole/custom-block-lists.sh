@@ -10,7 +10,8 @@ echo "================================================================"
 sleep 1
 
 echo "Creating backup copy of adlists.list ==> /etc/pihole/adlists.list.bk"
-sleep 1
+DOMAINS_BLOCKED_AFTER=`curl --silent "http://localhost/admin/api.php?summary"| jq '.domains_being_blocked'`
+sleep 0.5
 
 sudo cp /etc/pihole/adlists.list /etc/pihole/adlists.list.bk
 echo "DONE"
@@ -22,16 +23,30 @@ sleep 2
 echo "DONE"
 
 ## run pihole gravity update
-echo "Running pihole gravity..."
-sleep 3
-sudo bash /etc/.pihole/gravity.sh > /dev/null 2>&1
+echo "Starting pihole gravity...Please be patient"
+sleep 0.2
+sudo bash /etc/.pihole/gravity.sh 2>/dev/null &
+pid=$! # Process Id of the previous running command
+spin[0]="-"
+spin[1]="\\"
+spin[2]="|"
+spin[3]="/"
+echo -n "[copying] ${spin[0]}"
+while [ kill -0 $pid ]
+do  
+  for i in "${spin[@]}" 
+  do        
+        echo -ne "\b$i"        
+        sleep 0.1  
+  done
+done
+
 echo "Completed, Pihole Gravity has been run with the added lists"
 
-DOMAINS_BLOCKED_AFTER=`curl --silent "http://localhost/admin/api.php?summary"| jq '.domains_being_blocked'`
 DOMAINS_BLOCKED_BEFORE=`curl --silent "http://localhost/admin/api.php?summary"| jq '.domains_being_blocked'`
 echo "Domains being blocked before update:" $DOMAINS_BLOCKED_BEFORE
 echo "Domains being blocked after update:" $DOMAINS_BLOCKED_AFTER
-sleep 1
+sleep 0.5
 
 echo "Gathering detailed Pi-Hole stats..."
 sleep 2
