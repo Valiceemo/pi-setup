@@ -1,6 +1,6 @@
 #!/bin/sh
 
-VERSION=004
+VERSION=005
 
 echo "================================================================"
 echo "=====                Valiceemo adlists.list                ====="
@@ -28,13 +28,13 @@ echo "DONE"
 ## run pihole gravity update
 echo "Starting pihole gravity...Please be patient"
 sleep 0.2
-sudo /usr/local/bin/ pihole updateGravity 
+sudo /usr/local/bin/ pihole updateGravity 2>&1 &
 pid=$! # Process Id of the previous running command
 spin[0]="-"
 spin[1]="\\"
 spin[2]="|"
 spin[3]="/"
-echo -n "[copying] ${spin[0]}"
+echo -n "[Gravitating] ${spin[0]}"
 while [ kill -0 $pid ]
 do  
   for i in "${spin[@]}" 
@@ -46,7 +46,7 @@ done
 
 echo "Completed, Pihole Gravity has been run with the added lists"
 
-DOMAINS_BLOCKED_BEFORE=`curl --silent "http://localhost/admin/api.php?summary"| jq '.domains_being_blocked'`
+DOMAINS_BLOCKED_AFTER=`curl --silent "http://localhost/admin/api.php?summary"| jq '.domains_being_blocked'`
 echo "Domains being blocked before update:" $DOMAINS_BLOCKED_BEFORE
 echo "Domains being blocked after update:" $DOMAINS_BLOCKED_AFTER
 sleep 0.5
