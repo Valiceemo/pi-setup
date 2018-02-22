@@ -9,15 +9,18 @@ echo "================================================================"
 
 sleep 1
 
+echo "This list will take the lists from https://wally3k.github.io/ and add them to your pi-hole install"
+sleep 3
 echo "Creating backup copy of adlists.list ==> /etc/pihole/adlists.list.bk"
-DOMAINS_BLOCKED_AFTER=`curl --silent "http://localhost/admin/api.php?summary"| jq '.domains_being_blocked'`
+DOMAINS_BLOCKED_BEFORE=`curl --silent "http://localhost/admin/api.php?summary"| jq '.domains_being_blocked'`
 sleep 0.5
 
 sudo cp /etc/pihole/adlists.list /etc/pihole/adlists.list.bk
 echo "DONE"
 sleep 2
 echo "Adding lists to /etc/pihole/adlists.list..."
-sudo wget -qO - https://v.firebog.net/hosts/lists.php?type=tick | sudo tee /etc/pihole/adlists.list
+sudo echo "## Adlists modified by manunal script" > /etc/pihole/adlists.list
+sudo curl -s https://v.firebog.net/hosts/lists.php?type=nocross >> /etc/pihole/adlists.list
 sleep 2
 
 echo "DONE"
@@ -25,7 +28,7 @@ echo "DONE"
 ## run pihole gravity update
 echo "Starting pihole gravity...Please be patient"
 sleep 0.2
-sudo bash /etc/.pihole/gravity.sh 2>/dev/null &
+sudo /usr/local/bin/ pihole updateGravity 
 pid=$! # Process Id of the previous running command
 spin[0]="-"
 spin[1]="\\"
