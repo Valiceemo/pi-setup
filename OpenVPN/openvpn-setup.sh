@@ -7,7 +7,7 @@
 sudo mkdir /etc/openvpn/pia
 
 sudo wget https://www.privateinternetaccess.com/openvpn/openvpn.zip /etc/openvpn/pia
-sudo unzip openvpn.zip -d /etc/openvpn/openvpn/pia
+sudo unzip openvpn.zip -d /etc/openvpn/pia
 
 # Copy desired .ovpn connection to .conf file
 sudo cp sudo cp /etc/openvpn/pia/UK\ Southampton.ovpn /etc/openvpn/pia/uk.conf
