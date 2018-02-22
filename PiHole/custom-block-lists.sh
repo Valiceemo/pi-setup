@@ -20,7 +20,7 @@ echo "DONE"
 sleep 2
 echo "Adding lists to /etc/pihole/adlists.list..."
 echo "## Adlists modified by manunal script" | sudo tee --append /etc/pihole/adlists.list
-sudo curl -s https://v.firebog.net/hosts/lists.php?type=nocross >> /etc/pihole/adlists.list
+sudo curl -s https://v.firebog.net/hosts/lists.php?type=nocross | sudo tee --append /etc/pihole/adlists.list 
 sleep 2
 
 echo "DONE"
@@ -28,7 +28,7 @@ echo "DONE"
 ## run pihole gravity update
 echo "Starting pihole gravity...Please be patient"
 sleep 0.2
-sudo bash /etc/.pihole/gravity.sh 2>&1 &
+sudo bash /etc/.pihole/gravity.sh >/dev/null 2>&1 &
 pid=$! # Process Id of the previous running command
 spin[0]="-"
 spin[1]="\\"
