@@ -4,7 +4,15 @@ whiptail --title "DuckDNS Update Script" --msgbox "This setup will create an upd
 DOMAIN=$(whiptail --inputbox "What is your DuckDNS Domain Name?" 10 80 "" 3>&1 1>&2 2>&3)
 TOKEN=$(whiptail --inputbox "What is your DuckDNS Token?" 10 80 "" 3>&1 1>&2 2>&3)
 
-sudo mkdir /etc/duckdns
+if [ -! d "/etc/duckdns" ]
+then
+    echo "Creating folder /etc/duckdns"
+    sudo mkdir /etc/duckdns
+    sleep 0.5
+    echo "Done."
+    sleep 0.5
+fi
+    
 sudo touch /etc/duckdns/duckdns.sh
 
 echo "#!/bin/sh" | sudo tee --append /etc/duckdns/duckdns.sh
