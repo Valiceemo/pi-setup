@@ -1,6 +1,6 @@
 #!/bin/bash
 
-whiptail --title "DuckDNS Update Script" --msgbox "This setup will create an update script to run via cron to ensure your external IP is keep upto date." 8 78
+whiptail --title "DuckDNS Update Script" --msgbox "This setup will create an update script to run via cron to ensure your external IP is kept upto date." 8 78
 DOMAIN=$(whiptail --inputbox "What is your DuckDNS Domain Name?" 10 80 "" 3>&1 1>&2 2>&3)
 TOKEN=$(whiptail --inputbox "What is your DuckDNS Token?" 10 80 "" 3>&1 1>&2 2>&3)
 
