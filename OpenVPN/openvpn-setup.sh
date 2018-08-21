@@ -4,8 +4,33 @@
 
 # Scripted suetup of OpenVpn, allowing connection to PIA
 
-sudo mkdir /etc/openvpn/pia
+clear
+VERSION=002
+sleep 1
+echo "================================================================"
+echo "=====                Valiceemo PIA + OpenVPN Setup         ====="
+echo "================================================================"
 
+sleep 1
+echo "This script will help setup up Private internet Accesss with OpenVpn"
+sleep 1
+
+if [ -d "/etc/openvpn" ]
+then
+    echo "Creating Private Internet Access folder in /etc/openvpn"
+    sudo mkdir /etc/openvpn/pia
+    sleep 0.5
+    echo "done"
+else
+    echo "OpenVpn does not appear to be installed"
+    echo "Please install before running this script"
+    sleep 0.5
+    echo "Exiting"
+    sleep 0.5
+    exit
+fi
+
+echo "Downloading and unzipping PIA config files to /etc/openvpn/pia
 sudo wget https://www.privateinternetaccess.com/openvpn/openvpn.zip /etc/openvpn/pia
 sudo unzip openvpn.zip -d /etc/openvpn/pia
 
