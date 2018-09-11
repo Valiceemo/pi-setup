@@ -22,7 +22,7 @@ sleep 0.5
 sudo cp /etc/pihole/adlists.list /etc/pihole/adlists.list.bk
 sleep 0.5
 echo
-echo "Done, backup is at /etc/pihole/adlists.list.bk"
+echo "[✓]Done, backup is at /etc/pihole/adlists.list.bk"
 echo
 sleep 1
 DOMAINS_BLOCKED_BEFORE=`curl --silent "http://localhost/admin/api.php?summary"| jq '.domains_being_blocked'`
@@ -35,7 +35,7 @@ echo "#### Adlists modified by manunal script @ $(date)" | sudo tee --append /et
 echo | sudo tee --append /etc/pihole/adlists.list
 curl --silent https://v.firebog.net/hosts/lists.php?type=nocross | sudo tee --append /etc/pihole/adlists.list 
 sleep 2
-echo "Done."
+echo "[✓] Done"
 echo
 sleep 1
 ## run pihole gravity update
@@ -44,7 +44,7 @@ echo "......"
 sleep 0.2
 sudo bash /etc/.pihole/gravity.sh
 echo
-echo "Completed, Pihole Gravity has been run with the added lists"
+echo "[✓] Completed, Pihole Gravity has been run with the added lists"
 echo
 echo "Checking No of blocked domains..."
 sleep 3
