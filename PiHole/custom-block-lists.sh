@@ -1,6 +1,6 @@
 #!/bin/sh
 
-VERSION=006
+VERSION=007
 clear
 sleep 0.2
 echo "================================================================"
@@ -30,10 +30,10 @@ sleep 0.5
 
 ## Add Wally3K lists to Pi-hole, default is type=nocross, modify at own will / risk
 echo "Adding lists to /etc/pihole/adlists.list..."
-echo | sudo tee --append /etc/pihole/adlists.list
-echo "#### Adlists modified by manunal script @ $(date)" | sudo tee --append /etc/pihole/adlists.list
-echo | sudo tee --append /etc/pihole/adlists.list
-curl --silent https://v.firebog.net/hosts/lists.php?type=nocross | sudo tee --append /etc/pihole/adlists.list 
+echo | sudo tee --append /etc/pihole/adlists.list >/dev/null 2>&1
+echo "#### Adlists modified by manunal script @ $(date)" | sudo tee --append /etc/pihole/adlists.list >/dev/null 2>&1
+echo | sudo tee --append /etc/pihole/adlists.list >/dev/null 2>&1
+curl --silent https://v.firebog.net/hosts/lists.php?type=nocross | sudo tee --append /etc/pihole/adlists.list >/dev/null 2>&1
 sleep 2
 echo "[✓] Done"
 echo
