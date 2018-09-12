@@ -64,13 +64,23 @@ echo "  ${INFO} ${str}..."
 
 sleep 0.2
 sudo bash /etc/.pihole/gravity.sh
+sleep 1
 echo
 echo "  ${TICK} Completed, Pihole Gravity has been run with the added lists"
 echo
 str="Checking No of blocked domains"
 echo "  ${INFO} ${str}..."
 
-sleep 8
+echo -ne "#### 25%\r"
+sleep 2
+echo -ne "######## 50%\r"
+sleep 2
+echo -ne "############ 75%\r"
+sleep 2
+echo -ne "################ 93%\r"
+sleep 2
+echo -ne "#################### 100%\r"
+sleep 1
 DOMAINS_BLOCKED_AFTER=`curl --silent "http://localhost/admin/api.php?summary"| jq '.domains_being_blocked'`
 echo
 str="Domains being blocked before update:" $DOMAINS_BLOCKED_BEFORE
