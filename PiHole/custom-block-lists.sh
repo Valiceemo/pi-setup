@@ -16,7 +16,7 @@ resetText=$(tput sgr0)      # Reset to default color
 # RESULTS
 TICK="[${greenText}✓${resetText}]"
 INFO="[i]"
-DONE="${greenText}  done!${resetText}"
+DONE="${greenText}  Done!${resetText}"
 
 
 clear
@@ -40,7 +40,7 @@ echo "  ${INFO} ${str}..."
 sleep 0.5
 sudo cp /etc/pihole/adlists.list /etc/pihole/adlists.list.bk
 sleep 0.5
-echo "  ${DONE}"
+echo "${TICK}${DONE}"
 str="backup is at /etc/pihole/adlists.list.bk"
 echo "  ${INFO} ${str}"
 sleep 1
@@ -84,8 +84,9 @@ echo -ne '\n'
 sleep 1
 DOMAINS_BLOCKED_AFTER=`curl --silent "http://localhost/admin/api.php?summary"| jq '.domains_being_blocked'`
 echo
-str="Domains being blocked before update:" $DOMAINS_BLOCKED_BEFORE
-echo "  ${INFO} ${str}{DOMANS_BBLOCKED_BEFORE"
+str="Domains being blocked before update:"
+echo "  ${INFO} ${str}${DOMANS_BBLOCKED_BEFORE}"
 echo
-echo "Domains being blocked after update:" $DOMAINS_BLOCKED_AFTER
+str="Domains being blocked after update:"
+echo "  ${INFO} ${str}${DOMANS_BLOCKED_AFTER}"
 sleep 0.5
