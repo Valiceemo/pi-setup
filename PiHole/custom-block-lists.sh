@@ -80,6 +80,7 @@ sleep 2
 echo -ne "################ 93%\r"
 sleep 2
 echo -ne "#################### 100%\r"
+echo -ne '\n'
 sleep 1
 DOMAINS_BLOCKED_AFTER=`curl --silent "http://localhost/admin/api.php?summary"| jq '.domains_being_blocked'`
 echo
