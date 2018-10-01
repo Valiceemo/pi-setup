@@ -21,16 +21,16 @@ fi
 echo -n "  ${INFO) \e[32m Backing up existing adlists.list...\e[0m"
 sudo cp /etc/pihole/adlists.list /etc/adlists.list.bk.$TIMESTAMP
 sleep 1
-echo -e "  ${TICK} \e[32m Backup made to /etc/pihole/adlists.list.bk.$TIMESTAMP  \e[0m"
+echo -e "\\r  ${TICK} \e[32m Backup made to /etc/pihole/adlists.list.bk.$TIMESTAMP  \e[0m"
 
 echo -n "  ${INFO} \e[32m Restoring adlists.list to installation default \e0[m"
 echo "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts" | sudo tee /etc/pihole/adlists.list >/dev/null
 echo "https://mirror1.malwaredomains.com/files/justdomains" | sudo tee -a /etc/pihole/adlists.list >/dev/null
 
-echo -e "  ${TICK} \e[32m Lists returned to default  \e[0m"
+echo -e "\\r  ${TICK} \e[32m Lists returned to default  \e[0m"
 echo -n "  ${INFO} \e[32m Running Pi-Hole gravity to apply changes \e0[m"
 
-
+echo -e "\\r  ${TICK} Pi-hole Gravity is completed"
 ### Default lists
 #https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
 #https://mirror1.malwaredomains.com/files/justdomains
