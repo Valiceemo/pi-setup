@@ -85,7 +85,7 @@ sleep 1
 DOMAINS_BLOCKED_AFTER=`curl --silent "http://localhost/admin/api.php?summary"| jq '.domains_being_blocked'`
 echo
 str="Domains being blocked before update:"
-echo "  ${INFO} ${str}${DOMANS_BBLOCKED_BEFORE}"
+echo "  ${INFO} ${str}${DOMANS_BLOCKED_BEFORE}"
 echo
 str="Domains being blocked after update:"
 echo "  ${INFO} ${str}${DOMANS_BLOCKED_AFTER}"
